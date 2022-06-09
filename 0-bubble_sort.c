@@ -7,7 +7,7 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-size_t i, x;
+size_t i;
 int temp, sorted;
 
 	while (1)
@@ -23,13 +23,8 @@ int temp, sorted;
 					array[i] = array[i + 1];
 					array[i + 1] = temp;
 					sorted = 1;
-					for (x = 0; x <= size - 1; x++)
-					{
-						printf("%d", array[x]);
-						if (x !=size - 1)
-							printf(", ")
-					}
-					printf("\n");
+					aux_func(array, size);
+
 				}
 			}
 		}
@@ -39,8 +34,19 @@ int temp, sorted;
 }
 
 /**
- * bubble_sort - function that sorts an array of integers in ascending order
+ * aux_func - function that sorts an array of integers in ascending order
  * @array: array
  * @size: size
  */
-void aux_func()
+void aux_func(int *array, size_t size)
+{
+	size_t x;
+
+	for (x = 0; x <= size - 1; x++)
+	{
+		printf("%d", array[x]);
+		if (x != size - 1)
+			printf(", ");
+	}
+	printf("\n");
+}
