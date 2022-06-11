@@ -80,16 +80,19 @@ listint_t *swap_last(listint_t *temp, listint_t *sw_node)
 
 listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 {
-	listint_t *aux;
-	/* Reserve second position in temp */
-	aux = sw_node->next;
+	listint_t *aux_after, *aux_before;
+	/* Preserve previous and folowing positions */
+	aux_before = temp->prev;
+	aux_after = sw_node->next;
 
 	printf("Swap_middle");
     /* Swap node middle */
-    sw_node->prev = temp->prev;
-	sw_node->next = temp;
-	temp->prev = sw_node;
-	temp->next = aux;
+	sw_node->next = sw_node->prev;
+	sw_node->prev = aux_before;
+	temp->prev = temp->next;
+	temp->next = aux_after;
+	aux_before->next = sw_node;
+	aux_after->prev = temp;
 	return (sw_node);
 }
 
