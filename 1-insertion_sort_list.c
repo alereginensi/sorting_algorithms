@@ -6,13 +6,8 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-<<<<<<< HEAD
 	int sorted = 0;
-
 	listint_t **temp = list;
-=======
-	listint_t *temp = *list;
->>>>>>> 384868811a12453770952eed8fb5337a5a77974a
 
 		if (temp == NULL)
 			return;
