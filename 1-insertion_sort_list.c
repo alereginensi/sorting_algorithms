@@ -1,7 +1,8 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - function that sorts an array of integers in ascending order
+ * insertion_sort_list - function that sorts an array of integers
+ * in ascending order
  * @list: Head of doble linked list
  */
 void insertion_sort_list(listint_t **list)
@@ -43,8 +44,9 @@ void insertion_sort_list(listint_t **list)
 
 /**
  * swap_first - function that swaps two nodes at the head of the dllist
- * @list: Head of doble linked list
- * Return:
+ * @head: Head of doble linked list
+ * @sw_node: Node to be swaped
+ * Return: Node address after swap
  */
 listint_t *swap_first(listint_t **head, listint_t *sw_node)
 {
@@ -60,12 +62,19 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 	return (sw_node);
 }
 
+/**
+ * swap_last - function that swaps two nodes at the end of the dllist
+ * @temp: Head of doble linked list
+ * @sw_node: Node to be swaped
+ * Return: Node address after swap
+ */
 listint_t *swap_last(listint_t *temp, listint_t *sw_node)
 {
 	listint_t *aux_before;
+
 	aux_before = temp->prev;
-    /* Swap node at the end */
-    sw_node->next = sw_node->prev;
+	/* Swap node at the end */
+	sw_node->next = sw_node->prev;
 	sw_node->prev = temp->prev;
 	aux_before->next = sw_node;
 	temp->prev = temp->next;
@@ -73,6 +82,12 @@ listint_t *swap_last(listint_t *temp, listint_t *sw_node)
 	return (sw_node);
 }
 
+/**
+ * swap_middle - function that swaps two nodes at the middle of the dllist
+ * @temp: Head of doble linked list
+ * @sw_node: Node to be swaped
+ * Return: Node address after swap
+ */
 listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 {
 	listint_t *aux_after, *aux_before;
@@ -89,6 +104,10 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	return (sw_node);
 }
 
+/**
+ * print_listint - function that prints the int values for a dllist
+ * @h: Head of doble linked list
+ */
 void print_listint(const listint_t *h)
 {
 	while (h != NULL)/* Traverse to the last node */
