@@ -6,7 +6,7 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	int sorted = 0;
+	int sorted = 0, last = 0;
 	listint_t *temp = *list;
 
 		if (temp == NULL)
@@ -15,24 +15,27 @@ void insertion_sort_list(listint_t **list)
 		/* Traverse to the last to sort the value using insetion sort alg */
 		while (temp != NULL)
 		{
-			printf("temp->next->n = %d - temp->n = %d\n", temp->next->n, temp->n);
+			sorted = 0;
 			if (temp->next->n < temp->n)
 			{
 				sorted = 1;
 				if (temp->prev == NULL)
 					(*list) = swap_first((*list), temp->next);
-				else if (temp->next == NULL)
+				else if (temp->next->next == NULL)
+				{
 					temp = swap_last(temp, temp->next);
+					last = 1;
+				}
 				else
 					temp = swap_middle(temp, temp->next);
 				print_listint(*list);
 			}
+			/* End control */
+			if (last == 1 && sorted == 0)
+				break;
 			/* select forward or backward traverse */
-			if (sorted == 0)
-			{
-				printf("pica");
+			if (sorted == 0 || temp->prev == NULL)
 				temp = temp->next;
-			}
 			else
 				temp = temp->prev;
 		}
@@ -48,8 +51,6 @@ listint_t *swap_first(listint_t *head, listint_t *sw_node)
 	listint_t *aux;
 	/* Reserve second position in temp */
 	aux = sw_node->next;
-
-	printf("Swap_first");
     /* Make next of swap node as head and previous as NULL */
 	sw_node->next = head;
 	sw_node->prev = NULL;
@@ -60,7 +61,6 @@ listint_t *swap_first(listint_t *head, listint_t *sw_node)
 		head->prev = sw_node;
 		head->next = aux;
 	}
-
     /* Move the head to point to the new node */
 	head = sw_node;
 
@@ -69,11 +69,13 @@ listint_t *swap_first(listint_t *head, listint_t *sw_node)
 
 listint_t *swap_last(listint_t *temp, listint_t *sw_node)
 {
-	printf("Swap_last");
+	listint_t *aux_before;
+	aux_before = temp->prev;
     /* Swap node at the end */
-    sw_node->prev = temp->prev;
-	sw_node->next = temp;
-	temp->prev = sw_node;
+    sw_node->next = sw_node->prev;
+	sw_node->prev = temp->prev;
+	aux_before->next = sw_node;
+	temp->prev = temp->next;
 	temp->next = NULL;
 	return (sw_node);
 }
@@ -84,8 +86,6 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	/* Preserve previous and folowing positions */
 	aux_before = temp->prev;
 	aux_after = sw_node->next;
-
-	printf("Swap_middle");
     /* Swap node middle */
 	sw_node->next = sw_node->prev;
 	sw_node->prev = aux_before;
