@@ -24,7 +24,7 @@ void insertion_sort_list(listint_t **list)
 					temp = swap_last(temp, temp->next);
 				else
 					temp = swap_middle(temp, temp->next);
-				print_listint(list);
+				print_listint(*list);
 			}
 			/* select forward or backward traverse */
 			if (sorted == 0)
@@ -86,14 +86,17 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	return (sw_node);
 }
 
-void print_listint(const listint_t **h)
+void print_listint(const listint_t *h)
 {
 	if (h == NULL)
 		return;
 
 	while (h != NULL)/* Traverse to the last node */
 	{
-		printf("%d\n", h->n);
+		printf("%d", h->n);
 		h = h->next;
+		if (h->next != NULL)
+			printf(", ");
+		printf("\n");
 	}
 }
