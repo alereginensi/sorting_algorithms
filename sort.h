@@ -28,4 +28,9 @@ void quick_sort(int *array, size_t size);
 
 /** Aux functions **/
 void aux_func(int *array, size_t size);
+listint_t *swap_first(listint_t **head, listint_t *sw_node);
+listint_t *swap_last(listint_t *temp, listint_t *sw_node);
+listint_t *swap_middle(listint_t *temp, listint_t *sw_node);
+void print_listint(const listint_t *h);
+
 #endif
