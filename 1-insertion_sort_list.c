@@ -15,6 +15,7 @@ void insertion_sort_list(listint_t **list)
 		/* Traverse to the last to sort the value using insetion sort alg */
 		while (temp != NULL)
 		{
+			printf("temp->next->n = %d - temp->n = %d\n", temp->next->n, temp->n);
 			if (temp->next->n > temp->n)
 			{
 				sorted = 1;
@@ -45,6 +46,7 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 	/* Reserve second position in temp */
 	aux = sw_node->next;
 
+	printf("Swap_first");
     /* Make next of swap node as head and previous as NULL */
 	sw_node->next = (*head);
 	sw_node->prev = NULL;
@@ -64,6 +66,7 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 
 listint_t *swap_last(listint_t *temp, listint_t *sw_node)
 {
+	printf("Swap_last");
     /* Swap node at the end */
     sw_node->prev = temp->prev;
 	sw_node->next = temp;
@@ -78,6 +81,7 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	/* Reserve second position in temp */
 	aux = sw_node->next;
 
+	printf("Swap_middle");
     /* Swap node middle */
     sw_node->prev = temp->prev;
 	sw_node->next = temp;
@@ -88,9 +92,6 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 
 void print_listint(const listint_t *h)
 {
-	if (h == NULL)
-		return;
-
 	while (h != NULL)/* Traverse to the last node */
 	{
 		printf("%d", h->n);
