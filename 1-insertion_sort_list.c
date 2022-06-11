@@ -20,7 +20,7 @@ void insertion_sort_list(listint_t **list)
 			{
 				sorted = 1;
 				if (temp->prev == NULL)
-					(*list) = swap_first((*list), temp->next);
+					temp = swap_first(list, temp->next);
 				else if (temp->next->next == NULL)
 				{
 					temp = swap_last(temp, temp->next);
@@ -42,28 +42,21 @@ void insertion_sort_list(listint_t **list)
 }
 
 /**
- * insertion_sort_list - function that sorts an array of integers in ascending order
+ * swap_first - function that swaps two nodes at the head of the dllist
  * @list: Head of doble linked list
  * Return:
  */
-listint_t *swap_first(listint_t *head, listint_t *sw_node)
+listint_t *swap_first(listint_t **head, listint_t *sw_node)
 {
-	listint_t *aux;
+	listint_t *aux_after, *temp = *head;
 	/* Reserve second position in temp */
-	aux = sw_node->next;
+	aux_after = sw_node->next;
     /* Make next of swap node as head and previous as NULL */
-	sw_node->next = head;
+	sw_node->next = sw_node->prev;
+	temp->next = aux_after;
+	temp->prev = sw_node;
 	sw_node->prev = NULL;
-
-    /* Change prev of head node to new node */
-	if (head != NULL)
-	{
-		head->prev = sw_node;
-		head->next = aux;
-	}
-    /* Move the head to point to the new node */
-	head = sw_node;
-
+	*head = sw_node;
 	return (sw_node);
 }
 
