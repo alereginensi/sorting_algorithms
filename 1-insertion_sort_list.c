@@ -97,6 +97,6 @@ void print_listint(const listint_t *h)
 		h = h->next;
 		if (h->next != NULL)
 			printf(", ");
-		printf("\n");
 	}
+	printf("\n");
 }
