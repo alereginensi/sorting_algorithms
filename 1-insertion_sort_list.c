@@ -43,7 +43,7 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 {
 	listint_t *aux;
 	/* Reserve second position in temp */
-	sw_node->next = aux;
+	aux = sw_node->next;
 
     /* Make next of swap node as head and previous as NULL */
 	sw_node->next = (*head);
@@ -76,7 +76,7 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 {
 	listint_t *aux;
 	/* Reserve second position in temp */
-	sw_node->next = aux;
+	aux = sw_node->next;
 
     /* Swap node middle */
     sw_node->prev = temp->prev;
@@ -86,10 +86,10 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	return (sw_node);
 }
 
-void print_dlistint(const listint_t *h)
+void print_listint(const listint_t **h)
 {
 	if (h == NULL)
-		return (NULL);
+		return;
 
 	while (h != NULL)/* Traverse to the last node */
 	{
