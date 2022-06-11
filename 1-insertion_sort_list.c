@@ -86,7 +86,7 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 	return (sw_node);
 }
 
-void print_dlistint(const dlistint_t *h)
+void print_dlistint(const listint_t *h)
 {
 	if (h == NULL)
 		return (NULL);
