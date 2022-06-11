@@ -16,11 +16,11 @@ void insertion_sort_list(listint_t **list)
 		while (temp != NULL)
 		{
 			printf("temp->next->n = %d - temp->n = %d\n", temp->next->n, temp->n);
-			if (temp->next->n > temp->n)
+			if (temp->next->n < temp->n)
 			{
 				sorted = 1;
 				if (temp->prev == NULL)
-					*list = swap_first(list, temp->next);
+					(*list) = swap_first((*list), temp->next);
 				else if (temp->next == NULL)
 					temp = swap_last(temp, temp->next);
 				else
@@ -29,7 +29,10 @@ void insertion_sort_list(listint_t **list)
 			}
 			/* select forward or backward traverse */
 			if (sorted == 0)
+			{
+				printf("pica");
 				temp = temp->next;
+			}
 			else
 				temp = temp->prev;
 		}
@@ -40,7 +43,7 @@ void insertion_sort_list(listint_t **list)
  * @list: Head of doble linked list
  * Return:
  */
-listint_t *swap_first(listint_t **head, listint_t *sw_node)
+listint_t *swap_first(listint_t *head, listint_t *sw_node)
 {
 	listint_t *aux;
 	/* Reserve second position in temp */
@@ -48,18 +51,18 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 
 	printf("Swap_first");
     /* Make next of swap node as head and previous as NULL */
-	sw_node->next = (*head);
+	sw_node->next = head;
 	sw_node->prev = NULL;
 
     /* Change prev of head node to new node */
-	if ((*head) != NULL)
+	if (head != NULL)
 	{
-		(*head)->prev = sw_node;
-		(*head)->next = aux;
+		head->prev = sw_node;
+		head->next = aux;
 	}
 
     /* Move the head to point to the new node */
-	(*head) = sw_node;
+	head = sw_node;
 
 	return (sw_node);
 }
@@ -95,9 +98,9 @@ void print_listint(const listint_t *h)
 	while (h != NULL)/* Traverse to the last node */
 	{
 		printf("%d", h->n);
-		h = h->next;
 		if (h->next != NULL)
 			printf(", ");
+		h = h->next;
 	}
 	printf("\n");
 }
