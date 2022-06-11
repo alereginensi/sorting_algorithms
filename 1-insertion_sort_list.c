@@ -19,7 +19,7 @@ void insertion_sort_list(listint_t **list)
 			{
 				sorted = 1;
 				if (temp->prev == NULL)
-					**list = swap_first(&list, temp->next);
+					**list = swap_first(list, temp->next);
 				else if (temp->next == NULL)
 					temp = swap_last(temp, temp->next);
 				else
@@ -51,8 +51,10 @@ listint_t *swap_first(listint_t **head, listint_t *sw_node)
 
     /* Change prev of head node to new node */
 	if ((*head) != NULL)
+	{
 		(*head)->prev = sw_node;
 		(*head)->next = aux;
+	}
 
     /* Move the head to point to the new node */
 	(*head) = sw_node;
@@ -86,8 +88,6 @@ listint_t *swap_middle(listint_t *temp, listint_t *sw_node)
 
 void print_dlistint(const dlistint_t *h)
 {
-	int counter = 0;
-
 	if (h == NULL)
 		return (NULL);
 
