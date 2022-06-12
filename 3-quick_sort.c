@@ -44,9 +44,9 @@ void aux_sort(int *array, size_t first, size_t last, size_t size)
 		temp = array[pivot];
 		array[pivot] = array[j];
 		array[j] = temp;
-		aux_func(array, size);
 		aux_sort(array, first, j - 1, size);
 		aux_sort(array, j + 1, last, size);
+		aux_func(array, size);
 	}
 }
 
