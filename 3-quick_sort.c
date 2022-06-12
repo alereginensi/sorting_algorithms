@@ -36,9 +36,9 @@ void aux_sort(int *array, int low, int high, size_t size)
 size_t partition(int *array, int low, int high, size_t size)
 {
     int pivot = array[high];/* pivot */
-    int i = (low - 1);/* Index of smaller element */
+    int i = (low - 1), j = 0;/* Index of smaller element */
 
-    for (int j = low; j <= high - 1; j++)
+    for (j = low; j <= high - 1; j++)
     {
         /* If current element is smaller than or equal to pivot */
         if (array[j] <= pivot)
