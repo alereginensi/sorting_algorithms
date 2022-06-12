@@ -15,39 +15,53 @@ void quick_sort(int *array, size_t size)
  * aux_sort - sorts an array of integers using Quick sort algorithm
  * and Lomuto partition scheme
  * @array: array of numbers
- * @last: size -1 of the array
+ * @high: size -1 of the array
  * @size: size of the array
- * @first: 0
+ * @low: 0
  */
-void aux_sort(int *array, size_t first, size_t last, size_t size)
+void aux_sort(int *array, int low, int high, size_t size)
 {
-	size_t i, j, pivot, temp;
+    if (low < high)
+    {
+        /* pi is partitioning index, arr[p] is now at right place */
+        size_t pi = partition(array, low, high, size);
 
-	if (first < last)
-	{
-		pivot = first;
-		i = first;
-		j = last;
-		while (i < j)
-		{
-			while (array[i] <= array[pivot] && i < last)
-				i++;
-			while (array[j] > array[pivot])
-				j--;
-			if (i < j)
-			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
-		}
-		temp = array[pivot];
-		array[pivot] = array[j];
-		array[j] = temp;
-		aux_sort(array, first, j - 1, size);
-		aux_sort(array, j + 1, last, size);
-		aux_func(array, size);
-	}
+        /* Separately sort elements before */
+        /* partition and after partition */
+        aux_sort(array, low, pi - 1, size);
+        aux_sort(array, pi + 1, high, size);
+    }
+}
+
+size_t partition(int *array, int low, int high, size_t size)
+{
+    int pivot = array[high];/* pivot */
+    int i = (low - 1);/* Index of smaller element */
+
+    for (int j = low; j <= high - 1; j++)
+    {
+        /* If current element is smaller than or equal to pivot */
+        if (array[j] <= pivot)
+        {
+            i++;/* increment index of smaller element */
+            swap(&array[i], &array[j]);
+        }
+    }
+    swap(&array[i + 1], &array[high]);
+	aux_func(array, size);
+    return (i + 1);
+}
+
+/**
+ * swap - function that swaps two values in array of integers
+ * @a: a element to be swaped
+ * @b: b element to be swaped
+ */
+void swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+ 	*b = t;
 }
 
 /**
