@@ -53,6 +53,7 @@ size_t partition(int *array, int low, int high, size_t size)
 		{
 			i++;/* increment index of smaller element */
 			swap(&array[i], &array[j]);
+			aux_func(array, size);
 		}
 	}
 	swap(&array[i + 1], &array[high]);
