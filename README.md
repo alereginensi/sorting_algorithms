@@ -18,5 +18,6 @@ The following files are programs or functions in C:
 ##AUTHORS:
 
 | Name | Contact |
+| ---- | ------- |
 | Alejandro Reginensi | reginensia@gmail.com |
 | Sebastian Freire | sebastiancazenave@gmail.com |
