@@ -3,35 +3,47 @@
 /**
  * quick_sort - sorts an array of integers in ascending order
  * using the Selection sort algorithm
- * @array: array of numbers
+ * @array: array of arrays
  * @size: size of the array
  */
  void quick_sort(int *array, size_t size)
  {
-
+	 aux_sort(array, 0, size - 1);
  }
 
- void quicksort(int *array,int first,int last){
-    int i, j, pivot, temp;
-    if(first<last){
-       pivot=first;
-       i=first;
-       j=last;
-       while(i<j){
-          while(number[i]<=number[pivot]&&i<last)
-          i++;
-          while(number[j]>number[pivot])
-          j--;
-          if(i<j){
-             temp=number[i];
-             number[i]=number[j];
-             number[j]=temp;
+ /**
+  * aux_sort - sorts an array of integers using Quick sort algorithm
+  * and Lomuto partition scheme
+  * @array: array of numbers
+  * @last: size -1 of the array
+  * @first: 0
+  */
+ void aux_sort(int *array, size_t first, size_t last)
+ {
+    size_t i, j, pivot, temp;
+    if(first < last)
+	{
+       pivot = first;
+       i = first;
+       j = last;
+       while(i < j)
+	   {
+          while(array[i] <= array[pivot] && i < last)
+          	i++;
+          while(array[j] > array[pivot])
+          	j--;
+          if(i < j)
+		  {
+             temp = array[i];
+             array[i] = array[j];
+             array[j] = temp;
           }
        }
-       temp=number[pivot];
-       number[pivot]=number[j];
-       number[j]=temp;
-       quicksort(number,first,j-1);
-       quicksort(number,j+1,last);
+       temp = array[pivot];
+       array[pivot] = array[j];
+       array[j] = temp;
+	   printf("cambió\n");
+       aux_sort(array, first, j - 1);
+       aux_sort(array, j + 1, last);
     }
  }
