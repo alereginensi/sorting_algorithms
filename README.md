@@ -1,4 +1,4 @@
-# 0x17. C - Doubly linked lists
+# 0x1B. C - Sorting algorithms & Big O
 
 ## Technologies
 * C files are compiled using `gcc 9.3.0`
@@ -10,4 +10,13 @@ The following files are programs or functions in C:
 
 | Filename | Description |
 | -------- | ----------- |
-| `0-print_dlistint.c` | Function that prints all the elements of a `dlistint_t` list |
+| `0-bubble_sort.c` | Function that sorts an array of integers in ascending order using the Bubble sort algorithm |
+| `1-insertion_sort_list.c` | Function that sorts a doubly linked list of integers in ascending order using the Insertion sort algorithm |
+| `2-selection_sort.c` | Function that sorts an array of integers in ascending order using the Selection sort algorithm |
+| `3-quick_sort.c` | Function that sorts an array of integers in ascending order using the Quick sort algorithm |
+
+##AUTHORS:
+
+| Name | Contact |
+| Alejandro Reginensi | reginensia@gmail.com |
+| Sebastian Freire | sebastiancazenave@gmail.com |
