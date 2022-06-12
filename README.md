@@ -15,7 +15,7 @@ The following files are programs or functions in C:
 | `2-selection_sort.c` | Function that sorts an array of integers in ascending order using the Selection sort algorithm |
 | `3-quick_sort.c` | Function that sorts an array of integers in ascending order using the Quick sort algorithm |
 
-##AUTHORS:
+## AUTHORS:
 
 | Name | Contact |
 | ---- | ------- |
