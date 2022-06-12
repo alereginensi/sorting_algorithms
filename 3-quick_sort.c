@@ -21,35 +21,43 @@ void quick_sort(int *array, size_t size)
  */
 void aux_sort(int *array, int low, int high, size_t size)
 {
-    if (low < high)
-    {
-        /* pi is partitioning index, arr[p] is now at right place */
-        size_t pi = partition(array, low, high, size);
+	if (low < high)
+	{
+		/* pi is partitioning index, arr[p] is now at right place */
+		size_t pi = partition(array, low, high, size);
 
-        /* Separately sort elements before */
-        /* partition and after partition */
-        aux_sort(array, low, pi - 1, size);
-        aux_sort(array, pi + 1, high, size);
-    }
+		/* Separately sort elements before */
+		/* partition and after partition */
+		aux_sort(array, low, pi - 1, size);
+		aux_sort(array, pi + 1, high, size);
+	}
 }
 
+/**
+ * partition - function that partitions the array in two parts
+ * @array: addres forthe given array
+ * @low: begining of sub array index
+ * @high: end of subarray index
+ * @size: size of the given array
+ * Return: index position for the new pivot between two sub arrays
+ */
 size_t partition(int *array, int low, int high, size_t size)
 {
-    int pivot = array[high];/* pivot */
-    int i = (low - 1), j = 0;/* Index of smaller element */
+	int pivot = array[high];/* pivot */
+	int i = (low - 1), j = 0;/* Index of smaller element */
 
-    for (j = low; j <= high - 1; j++)
-    {
-        /* If current element is smaller than or equal to pivot */
-        if (array[j] <= pivot)
-        {
-            i++;/* increment index of smaller element */
-            swap(&array[i], &array[j]);
-        }
-    }
-    swap(&array[i + 1], &array[high]);
+	for (j = low; j <= high - 1; j++)
+	{
+		/* If current element is smaller than or equal to pivot */
+		if (array[j] <= pivot)
+		{
+			i++;/* increment index of smaller element */
+			swap(&array[i], &array[j]);
+		}
+	}
+	swap(&array[i + 1], &array[high]);
 	aux_func(array, size);
-    return (i + 1);
+	return (i + 1);
 }
 
 /**
@@ -61,7 +69,7 @@ void swap(int *a, int *b)
 {
 	int t = *a;
 	*a = *b;
- 	*b = t;
+	*b = t;
 }
 
 /**
