@@ -10,7 +10,7 @@ void insertion_sort_list(listint_t **list)
 	int sorted = 0, last = 0;
 	listint_t *temp = *list;
 
-		if (temp == NULL)
+		if (temp == NULL || temp->next == NULL)
 			return;
 
 		/* Traverse to the last to sort the value using insetion sort alg */
