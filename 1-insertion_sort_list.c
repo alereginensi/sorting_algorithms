@@ -22,21 +22,16 @@ void insertion_sort_list(listint_t **list)
 				sorted = 1;
 				if (temp->prev == NULL)
 				{
-					printf("Swap first:\n");
 					temp = swap_first(temp, temp->next);
 					*list = temp;
 				}
 				else if (temp->next->next == NULL)
 				{
-					printf("Swap last:\n");
 					temp = swap_last(temp, temp->next);
 					last = 1;
 				}
 				else
-				{
-					printf("Swap middle:\n");
 					temp = swap_middle(temp, temp->next);
-				}
 				print_listint(*list);
 			}
 			/* End control */
