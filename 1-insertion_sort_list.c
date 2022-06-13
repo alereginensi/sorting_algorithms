@@ -8,36 +8,38 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *sw_node;
+/*Define temp to traverse the list and and sw_node to insert bef or aftr*/
 
-	if (!list)
+	if (!list)/*Input control*/
 		return;
 
-	temp = *list;
+	temp = *list;/*Assign head to temp*/
 
-	while (temp)
-	{
+	while (temp)/*Traverse till the end of the list*/
+	{/*if not at the end node and next unordered > (insert)*/
 		while (temp->next && (temp->n > temp->next->n))
 		{
-			sw_node = temp->next;
+			sw_node = temp->next;/*Set new node to the unsorted node*/
+			/*Keep the conection to the folowing nodes of the list*/
 			temp->next = sw_node->next;
+			/*Keep the conection to the previous nodes of the list*/
 			sw_node->prev = temp->prev;
-
-			if (temp->prev)
+			if (temp->prev)/*if not at the begining*/
+				/*Keep the conection from the previous nodes of the list*/
 				temp->prev->next = sw_node;
-
-			if (sw_node->next)
+			if (sw_node->next)/*If not at the end*/
+				/*Keep the conection from the folowing nodes of the list*/
 				sw_node->next->prev = temp;
-
+			/*Interconnect new inserted positions*/
 			temp->prev = sw_node;
 			sw_node->next = temp;
-
-			if (sw_node->prev)
+			if (sw_node->prev)/*If not at the begining*/
+				/*Decrement 1 position in the list*/
 				temp = sw_node->prev;
-			else
+			else /*set the new node as the head of the list*/
 				*list = sw_node;
-
 			print_listint(*list);
-		}
+		} /*Increment 1 position in the list*/
 		temp = temp->next;
 	}
 }
